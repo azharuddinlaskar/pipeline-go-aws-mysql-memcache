@@ -16,6 +16,3 @@ RUN \
  ./configure &&\
  make &&\
  make install
-
-RUN npm install -g api-console-cli &&\
- npm install -g bower

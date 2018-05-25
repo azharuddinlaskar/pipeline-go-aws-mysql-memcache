@@ -1,4 +1,4 @@
-# Base the docker container off of
+# Base the docker container off of matchmove/bitbucket-pipeline-go-aws-mysql:latest
 FROM matchmove/bitbucket-pipeline-go-aws-mysql:latest
 
 RUN apt-get update -q

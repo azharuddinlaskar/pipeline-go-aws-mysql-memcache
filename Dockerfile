@@ -16,4 +16,3 @@ RUN \
  ./configure &&\
  make &&\
  sudo make install
-

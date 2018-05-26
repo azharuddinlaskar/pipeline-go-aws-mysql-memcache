@@ -15,4 +15,4 @@ RUN \
  cd node-v6.10.1 &&\
  ./configure &&\
  make &&\
- sudo make install
+ make install

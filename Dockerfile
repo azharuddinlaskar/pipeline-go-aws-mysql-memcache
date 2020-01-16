@@ -14,7 +14,7 @@ ENV REPO_OWNER github.com/someone
 
 # Update and Fix Language
 RUN \
- apt-get && apt-get -y upgrade &&\
+ apt-get update && apt-get -y upgrade &&\
  apt-get -y --no-install-recommends install locales &&\
  echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen &&\
  locale-gen en_US.UTF-8 &&\

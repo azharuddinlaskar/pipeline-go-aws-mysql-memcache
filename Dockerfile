@@ -36,15 +36,11 @@ RUN \
 # Install built in's
 RUN \
  apt-get -y --no-install-recommends install mysql-client redis-server &&\
- apt-get autoclean && apt-get clean && apt-get autoremove
+ apt-get autoclean && apt-get clean && apt-get autoremove &&\
+ apt-get -y install unzip groff
 
 # Install Goose
 RUN go get bitbucket.org/liamstask/goose/cmd/goose
-
-
-RUN \
- apt-get update && apt-get -y upgrade &&\
- apt-get -y install unzip groff
 
 RUN \
  curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip" &&\
@@ -60,18 +56,5 @@ ADD scripts /scripts
 RUN chmod -R 755 /scripts
 ENV PATH $PATH:/scripts
 
-RUN apt-get update -q
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils
-
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install memcached
-
-RUN curl -O https://nodejs.org/dist/v6.10.1/node-v6.10.1.tar.gz
-
-RUN \
- tar -xvf node-v6.10.1.tar.gz &&\
- rm node-v6.10.1.tar.gz &&\
- cd node-v6.10.1 &&\
- ./configure &&\
- make &&\
- make install
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends apt-utils &&\
+ DEBIAN_FRONTEND=noninteractive apt-get -y install memcached
